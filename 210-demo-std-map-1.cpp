@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
-#include <vector>
 #include <tuple>
+#include <algorithm> // min, max
 using namespace std;
 
 int main() {
@@ -32,8 +32,9 @@ int main() {
             if (villagers.find(name) != villagers.end()) {
                 int current = get<0>(villagers[name]);
                 get<0>(villagers[name]) = min(10, current + 1); // increase friendship but cap at 10
-                cout << "Friendship incresed for " << name  << "!\n"; //confirmation message
-            } else {
+                cout << "Friendship increaised for " << name  << "!\n"; //confirmation message
+            } 
+            else {
                 cout << "Villager not found.\n";
             }
         }
@@ -42,17 +43,18 @@ int main() {
             cout << "Enter Villager name: ";
             cin >> name;
 
-            if (villagers.find(name) == villagers.end()) {
+            if (villagers.find(name) != villagers.end()) {
                 int current = get<0>(villagers[name]);
                 get<0>(villagers[name]) = max(0, current - 1); // decrease friendship but floor at 0
                 cout << "Friendship decreased for " << name  << "!\n"; //confirmation message
-        } else {
+        } 
+        else {
                 cout << "Villager not found.\n";
-            }
         }
+    }
             
 
-        else if (choice == 3){
+        else if (choice == 3) {
             cout << "Enter Villager name: ";
             cin >> name;
 
@@ -63,7 +65,8 @@ int main() {
                      << get<0>(data) << ", "
                      << get<1>(data) << ", "
                      << get<2>(data) << "]\n";
-            } else {
+            } 
+            else {
                 cout << "Villager not found.\n";
             }
         }
@@ -79,6 +82,6 @@ int main() {
     }
 
     return 0;
-    }
+}
 
 
