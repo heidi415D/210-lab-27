@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    // milestone 3
+    
     map<string, tuple<int, string, string>> villagers; // friendship, species, catchphrase
 
     // preload villagers
@@ -30,6 +30,7 @@ int main() {
         if (choice == 1) {
             cout << "Enter Villager name: ";
             cin >> name;
+
             int level;
             string species, catchphrase;
 
@@ -48,16 +49,27 @@ int main() {
         else if (choice == 2) {
             cout << "Enter Villager name to delete: ";
             cin >> name;
-            villagers.erase(name);
-            cout << "Villager " << name << " deleted!\n"; //confirmation message
-    }
-            
 
+            if (villagers.find(name) != villagers.end()) { // check before erasing
+                villagers.erase(name);
+                cout << "Villager " << name << " deleted!\n"; //confirmation message
+            } else {
+                cout << "Villager " << name << " not found!\n";
+            }
+         }
+            
         else if (choice == 3) {
             cout << "Enter Villager name: ";
             cin >> name;
-            get<0>(villagers[name])++;
-            cout << "Friendship increased for " << name << "!\n";
+
+            if (villagers.find(name) != villagers.end()) {
+                int current = get<0>(villagers[name]);
+                get<0>(villagers[name]) = min(10, current + 1); // max friendship is 10
+                cout << "Friendship increased for " << name << "!\n";
+            } else {
+                cout << "Villager " << name << " not found!\n";
+            }
+    
         }
             
         else if (choice == 6) {
