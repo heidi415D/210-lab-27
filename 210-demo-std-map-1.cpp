@@ -8,25 +8,28 @@ int main() {
     // declarations
     map<string, tuple<int, string>> villagerData; // friendship, species, catchphrase
 
-    // insert elements into the map
-    // note how the right-hand side of the assignment are the vector elements
+    // insert villagers using make_tuple
     villagerData["Drago"] = {5, "Alligator", "Snap to It!"};
     villagerData["Kyle"] = {10, "Wolf", "Hubba hubba!"};
     villagerData.insert({"Raymond", make_tuple(8, "Cat", "Nice fit")});
 
+    // print map contents using a range based for loop
     cout << "Villager details (range-based for loop):" << endl;
-    
-    
+    for (auto pair : villagerData) {
+        cout << pair.first << " ["
+             << get<0>(pair.secon) << ", " // friendship
+             << get<1>(pair.second) << ", " // species
+             << get<2>(pair.second) << "]" endl; // catchphrase
+    }
 
-    // access the map using iterators
-    cout << "\nVillagers and their favorite colors (iterators):" << endl;
-    for (map<string, vector<string>>::iterator it = villagerColors.begin(); 
-                                               it != villagerColors.end(); ++it) {
-        cout << it->first << ": ";
-        for (auto color : it->second) {
-            cout << color << " ";
-        }
-        cout << endl;
+    //  print again using an iterator loop
+    cout << "\nVillager details (iterator loop):" << endl;
+    for (map<string, tuple<int, string, string>>::iterator it = villagerData.begin();
+         it != villagerData.end(); ++it) {
+        cout << it->first << " ["
+             << get<0>(it->second) << ", "
+             << get<1>(it->second) << ", "
+             << get<2>(it->second) << "]" << endl;
     }
 
     // delete an element
