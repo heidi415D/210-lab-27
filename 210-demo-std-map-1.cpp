@@ -8,10 +8,10 @@ int main() {
     // milestone 3
     map<string, tuple<int, string, string>> villager; // friendship, species, catchphrase
 
-    // insert villagers using make_tuple
-    villagerData["Drago"] = make_tuple(5, "Alligator", "Snap to It!");
-    villagerData["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
-    village"Raymond", make_tuple(8, "Cat", "Nice fit")});
+    // preload villagers
+    villagers["Drago"] = make_tuple(5, "Alligator", "Snap to It!");
+    villagers["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
+    villagers["Raymond"] = make_tuple(8, "Cat", "Nice fit");
 
     // print map contents using a range based for loop
     cout << "Villager details (range-based for loop):" << endl;
