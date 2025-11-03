@@ -28,16 +28,29 @@ int main() {
         if (choice == 1) {
             cout << "Enter Villager name: ";
             cin >> name;
-            get<0>(villagers[name])++; // increase friendship
-            cout << "Friendship incresed for " << name  << "!\n"; //confirmation message
+
+            if (villagers.find(name) != villagers.end()) {
+                int current = get<0>(villagers[name]);
+                get<0>(villagers[name]) = min(10, current + 1); // increase friendship but cap at 10
+                cout << "Friendship incresed for " << name  << "!\n"; //confirmation message
+            } else {
+                cout << "Villager not found.\n";
+            }
         }
 
         else if (choice == 2) {
             cout << "Enter Villager name: ";
             cin >> name;
-            get<0>(villagers[name])--; // decrease friendship
-            cout << "Friendship decreased for " << name  << "!\n"; //confirmation message
+
+            if (villagers.find(name) == villagers.end()) {
+                int current = get<0>(villagers[name]);
+                get<0>(villagers[name]) = max(0, current - 1); // decrease friendship but floor at 0
+                cout << "Friendship decreased for " << name  << "!\n"; //confirmation message
+        } else {
+                cout << "Villager not found.\n";
+            }
         }
+            
 
         else if (choice == 3){
             cout << "Enter Villager name: ";
@@ -57,6 +70,7 @@ int main() {
             
         else if (choice == 4) {
             cout << "Thanks for playing!\n";
+            break;
         }
         else {
             cout << "Invalid choice. Please try again.\n";
