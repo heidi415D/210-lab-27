@@ -5,13 +5,13 @@
 using namespace std;
 
 int main() {
-    // declarations
-    map<string, tuple<int, string, string>> villagerData; // friendship, species, catchphrase
+    // milestone 3
+    map<string, tuple<int, string, string>> villager; // friendship, species, catchphrase
 
     // insert villagers using make_tuple
     villagerData["Drago"] = make_tuple(5, "Alligator", "Snap to It!");
     villagerData["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
-    villagerData.insert({"Raymond", make_tuple(8, "Cat", "Nice fit")});
+    village"Raymond", make_tuple(8, "Cat", "Nice fit")});
 
     // print map contents using a range based for loop
     cout << "Villager details (range-based for loop):" << endl;
@@ -53,3 +53,4 @@ int main() {
 
     return 0;
 }
+
