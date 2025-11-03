@@ -1,17 +1,18 @@
 #include <iostream>
 #include <map>
 #include <vector>
+#include <tuple>
 using namespace std;
 
 int main() {
     // declarations
-    map<string, vector<string>> villagerColors;
+    map<string, tuple<int, string>> villagerData; // friendship, species, catchphrase
 
     // insert elements into the map
     // note how the right-hand side of the assignment are the vector elements
-    villagerColors["Audie"] = {"Orange", "Yellow", "Red"};
-    villagerColors["Raymond"] = {"Black", "Gray", "White"};
-    villagerColors.insert({"Marshal", {"Blue", "White", "Black"}});
+    villagerData["Drago"] = {5, "Alligator", "Snap to It!"};
+    villagerData["Kyle"] = {10, "Wolf", "Hubba hubba!"};
+    villagerData.insert({"Raymond", make_tuple(8, "Cat", "Nice fit")});
 
     // access the map using a range-based for loop
     cout << "Villagers and their favorite colors (range-based for loop):" << endl;
