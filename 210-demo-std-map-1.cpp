@@ -18,69 +18,53 @@ int main() {
 
     while (true) { // keep showing menu until user exits
         cout << "\n==== Villager Menu ====\n";
-        cout << "1. Increase Friendship\n";
-        cout << "2. Decrease Friendship\n";
-        cout << "3. Search Villager\n";
-        cout << "4. Exit\n";
+        cout << "1. Add Villager\n";
+        cout << "2. Delete Villager\n";
+        cout << "3. Increase Friendship\n";
+        cout << "4. Decrease Friendship\n";
+        cout << "5. Search Villager\n";
+        cout << "6. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
         if (choice == 1) {
             cout << "Enter Villager name: ";
             cin >> name;
+            int level;
+            string species, catchphrase;
 
-            if (villagers.find(name) != villagers.end()) {
-                int current = get<0>(villagers[name]);
-                get<0>(villagers[name]) = min(10, current + 1); // increase friendship but cap at 10
-                cout << "Friendship increaised for " << name  << "!\n"; //confirmation message
-            } 
-            else {
-                cout << "Villager not found.\n";
-            }
+            cout << "Friendship level: ";
+            cin >> level;
+            cout << "Species: ";
+            cin >> species;
+            cout << "Catchphrase: ";
+            cin.ignore(); // clear newline from input buffer
+            getline(cin, catchphrase);
+
+            villagers[name] = make_tuple(level, species, catchphrase);
+            cout << "Villager " << name << " added!\n"; //confirmation message
         }
 
         else if (choice == 2) {
-            cout << "Enter Villager name: ";
+            cout << "Enter Villager name to delete: ";
             cin >> name;
-
-            if (villagers.find(name) != villagers.end()) {
-                int current = get<0>(villagers[name]);
-                get<0>(villagers[name]) = max(0, current - 1); // decrease friendship but floor at 0
-                cout << "Friendship decreased for " << name  << "!\n"; //confirmation message
-        } 
-        else {
-                cout << "Villager not found.\n";
-        }
+            villagers.erase(name);
+            cout << "Villager " << name << " deleted!\n"; //confirmation message
     }
             
 
         else if (choice == 3) {
             cout << "Enter Villager name: ";
             cin >> name;
-
-            // search logic with check
-            if (villagers.find(name) != villagers.end()) {
-                auto data = villagers[name];
-                cout << name << " ["
-                     << get<0>(data) << ", "
-                     << get<1>(data) << ", "
-                     << get<2>(data) << "]\n";
-            } 
-            else {
-                cout << "Villager not found.\n";
-            }
+            get<0>(villagers[name])++;
+            cout << "Friendship increased for " << name << "!\n";
         }
             
-        else if (choice == 4) {
+        else if (choice == 6) {
             cout << "Thanks for playing!\n";
-            break;
+            break; // exit the loop and program
         }
-        else {
-            cout << "Invalid choice. Please try again.\n";
-        }
-
     }
-
     return 0;
 }
 
