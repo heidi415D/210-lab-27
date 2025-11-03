@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     // milestone 3
-    map<string, tuple<int, string, string>> villager; // friendship, species, catchphrase
+    map<string, tuple<int, string, string>> villagers; // friendship, species, catchphrase
 
     // preload villagers
     villagers["Drago"] = make_tuple(5, "Alligator", "Snap to It!");
@@ -16,7 +16,7 @@ int main() {
     int choice; // user menu choice
     string name; // name entered by user
 
-    while (true) {
+    while (true) { // keep showing menu until user exits
         cout << "\n==== Villager Menu ====\n";
         cout << "1. Increase Friendship\n";
         cout << "2. Decrease Friendship\n";
@@ -32,11 +32,27 @@ int main() {
             cout << "Friendship incresed for " << name  << "!\n"; //confirmation message
         }
 
-        else if (choice == 2)
+        else if (choice == 2) {
+            cout << "Enter Villager name: ";
+            cin >> name;
+            get<0>(villager[name])--; // decrease friendship
+            cout << "Friendship decreased for " << name  << "!\n"; //confirmation message
+        }
+
+        else if (choice == 3){
+            cout << "Enter Villager name: ";
+            
+
+        else if (choice == 4) {
+            cout << "Thanks for playing!\n";
+        }
+        else {
+            cout << "Invalid choice. Please try again.\n";
+        }
+
     }
 
-    
-    
-  
+    return 0;
+    }
 }
 
