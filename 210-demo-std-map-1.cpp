@@ -6,20 +6,20 @@ using namespace std;
 
 int main() {
     // declarations
-    map<string, tuple<int, string>> villagerData; // friendship, species, catchphrase
+    map<string, tuple<int, string, string>> villagerData; // friendship, species, catchphrase
 
     // insert villagers using make_tuple
-    villagerData["Drago"] = {5, "Alligator", "Snap to It!"};
-    villagerData["Kyle"] = {10, "Wolf", "Hubba hubba!"};
+    villagerData["Drago"] = make_tuple(5, "Alligator", "Snap to It!");
+    villagerData["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
     villagerData.insert({"Raymond", make_tuple(8, "Cat", "Nice fit")});
 
     // print map contents using a range based for loop
     cout << "Villager details (range-based for loop):" << endl;
     for (auto pair : villagerData) {
         cout << pair.first << " ["
-             << get<0>(pair.secon) << ", " // friendship
+             << get<0>(pair.second) << ", " // friendship
              << get<1>(pair.second) << ", " // species
-             << get<2>(pair.second) << "]" endl; // catchphrase
+             << get<2>(pair.second) << "]" << endl; // catchphrase
     }
 
     //  print again using an iterator loop
