@@ -13,44 +13,30 @@ int main() {
     villagers["Kyle"] = make_tuple(10, "Wolf", "Hubba hubba!");
     villagers["Raymond"] = make_tuple(8, "Cat", "Nice fit");
 
-    // print map contents using a range based for loop
-    cout << "Villager details (range-based for loop):" << endl;
-    for (auto pair : villagerData) {
-        cout << pair.first << " ["
-             << get<0>(pair.second) << ", " // friendship
-             << get<1>(pair.second) << ", " // species
-             << get<2>(pair.second) << "]" << endl; // catchphrase
+    int choice; // user menu choice
+    string name; // name entered by user
+
+    while (true) {
+        cout << "\n==== Villager Menu ====\n";
+        cout << "1. Increase Friendship\n";
+        cout << "2. Decrease Friendship\n";
+        cout << "3. Search Villager\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            cout << "Enter Villager name: ";
+            cin >> name;
+            get<0>(villager[name])++; // increase friendship
+            cout << "Friendship incresed for " << name  << "!\n"; //confirmation message
+        }
+
+        else if (choice == 2)
     }
 
-    //  print again using an iterator loop
-    cout << "\nVillager details (iterator loop):" << endl;
-    for (map<string, tuple<int, string, string>>::iterator it = villagerData.begin();
-         it != villagerData.end(); ++it) {
-        cout << it->first << " ["
-             << get<0>(it->second) << ", "
-             << get<1>(it->second) << ", "
-             << get<2>(it->second) << "]" << endl;
-    }
-
-    // delete element by key
-    villagerData.erase("Raymond");
-
-    //search for villager using find()
-    string searchKey = "Drago";
-    auto it = villagerData.find(searchKey);
-    if (it != villagerData.end()) {
-        cout << "\nFound " << searchKey << ": ["
-             << get<0>(it->second) << ", "
-             << get<1>(it->second) << ", "
-             << get<2>(it->second) << "]" << endl;
-    } else 
-        cout << endl << searchKey << " not found." << endl;
-
-    // report size, clear, report size again to confirm map operations
-    cout << "\nSize before clear: " << villagerData.size() << endl;
-    villagerData.clear();
-    cout << "Size after clear: " << villagerData.size() << endl;
-
-    return 0;
+    
+    
+  
 }
 
