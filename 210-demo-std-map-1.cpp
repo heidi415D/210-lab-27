@@ -14,14 +14,9 @@ int main() {
     villagerData["Kyle"] = {10, "Wolf", "Hubba hubba!"};
     villagerData.insert({"Raymond", make_tuple(8, "Cat", "Nice fit")});
 
-    // access the map using a range-based for loop
-    cout << "Villagers and their favorite colors (range-based for loop):" << endl;
-    for (auto pair : villagerColors) {
-        cout << pair.first << ": ";
-        for (auto color : pair.second)
-            cout << color << " ";
-        cout << endl;
-    }
+    cout << "Villager details (range-based for loop):" << endl;
+    
+    
 
     // access the map using iterators
     cout << "\nVillagers and their favorite colors (iterators):" << endl;
